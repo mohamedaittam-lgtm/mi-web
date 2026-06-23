@@ -1,4 +1,4 @@
-const blogIndex = [
+var blogIndex = [
   {
     "slug": "principios-de-la-seguridad-informtica",
     "title": "Principios de la seguridad Informática",

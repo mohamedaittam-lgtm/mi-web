@@ -1,4 +1,4 @@
-const labTopologies = [
+var labTopologies = [
   {
     "name": "DMZ + LAN",
     "nodes": [

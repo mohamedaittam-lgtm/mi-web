@@ -1,4 +1,4 @@
-const portfolioItems = [
+var portfolioItems = [
   {
     "title": "Servidores Linux empresariales",
     "category": "Infraestructura",

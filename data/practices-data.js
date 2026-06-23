@@ -1,4 +1,4 @@
-const practices = [
+var practices = [
   {
     "title": "Instalación y hardening de Ubuntu Server 22.04",
     "category": "Linux",

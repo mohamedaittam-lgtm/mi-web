@@ -1,4 +1,4 @@
-const roadmaps = [
+var roadmaps = [
   {
     "name": "Linux Admin",
     "icon": "🐧",
