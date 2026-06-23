@@ -1573,11 +1573,15 @@ function renderBlogPosts(posts) {
 }
 
 function openBlogModal(slug) {
+  console.log('[BLOG_MODAL] called with slug:', slug);
   try {
     const p = blogIndex.find(x => x.slug === slug);
+    console.log('[BLOG_MODAL] post found:', !!p, p?.title);
     if (!p) return showModal("Error", '<p class="text-red-400">Artículo no encontrado.</p>');
     const content = blogContent[slug];
+    console.log('[BLOG_MODAL] content found:', !!content, 'length:', content?.length);
     if (!content) return showModal("Error", '<p class="text-red-400">Contenido no encontrado.</p>');
+    console.log('[BLOG_MODAL] calling showModal');
     showModal(p.title, `
     <div class="space-y-5">
       <div class="flex flex-wrap gap-2 items-center">
@@ -1591,10 +1595,12 @@ function openBlogModal(slug) {
       </div>
     </div>
   `);
+    console.log('[BLOG_MODAL] showModal completed successfully');
   } catch(e) {
     console.error('[BLOG_MODAL_ERROR]', e);
     showModal("Error", '<p class="text-red-400">Error al abrir el artículo: ' + escAttr(e.message) + '</p>');
   }
+  console.log('[BLOG_MODAL] function finished');
 }
 
 // ══════════════════════════════════════════════
