@@ -1,102 +1,142 @@
 const technologies = [
   {
     "name": "Linux",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
-    "category": "os"
+    "cat": "Sistemas",
+    "level": 95,
+    "color": "#F8762E",
+    "icon": "🐧"
   },
   {
     "name": "Windows Server",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
-    "category": "os"
+    "cat": "Sistemas",
+    "level": 85,
+    "color": "#0078D4",
+    "icon": "🪟"
   },
   {
-    "name": "Docker",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    "category": "cloud"
-  },
-  {
-    "name": "Kubernetes",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg",
-    "category": "cloud"
-  },
-  {
-    "name": "Ansible",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg",
-    "category": "cloud"
-  },
-  {
-    "name": "Terraform",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
-    "category": "cloud"
+    "name": "Bash/Shell",
+    "cat": "Sistemas",
+    "level": 93,
+    "color": "#4EAA25",
+    "icon": "💻"
   },
   {
     "name": "Python",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    "category": "dev"
+    "cat": "Dev",
+    "level": 88,
+    "color": "#3776AB",
+    "icon": "🐍"
   },
   {
-    "name": "Bash",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg",
-    "category": "dev"
+    "name": "Docker",
+    "cat": "Contenedores",
+    "level": 91,
+    "color": "#2496ED",
+    "icon": "🐳"
   },
   {
-    "name": "Git",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-    "category": "dev"
+    "name": "Kubernetes",
+    "cat": "Contenedores",
+    "level": 82,
+    "color": "#326CE5",
+    "icon": "☸️"
   },
   {
-    "name": "GitHub Actions",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-    "category": "cloud"
+    "name": "Proxmox",
+    "cat": "Sistemas",
+    "level": 87,
+    "color": "#E57000",
+    "icon": "🖥️"
   },
   {
-    "name": "Prometheus",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg",
-    "category": "monitoring"
+    "name": "VMware",
+    "cat": "Sistemas",
+    "level": 83,
+    "color": "#607078",
+    "icon": "⚙️"
   },
   {
-    "name": "Grafana",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg",
-    "category": "monitoring"
+    "name": "AWS",
+    "cat": "Cloud",
+    "level": 85,
+    "color": "#FF9900",
+    "icon": "☁️"
+  },
+  {
+    "name": "Azure",
+    "cat": "Cloud",
+    "level": 78,
+    "color": "#0089D6",
+    "icon": "🌐"
+  },
+  {
+    "name": "Terraform",
+    "cat": "Cloud",
+    "level": 80,
+    "color": "#7B42BC",
+    "icon": "🏗️"
+  },
+  {
+    "name": "Ansible",
+    "cat": "Dev",
+    "level": 84,
+    "color": "#EE0000",
+    "icon": "🤖"
   },
   {
     "name": "Nginx",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
-    "category": "web"
-  },
-  {
-    "name": "Apache",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg",
-    "category": "web"
+    "cat": "Redes",
+    "level": 88,
+    "color": "#009639",
+    "icon": "🌍"
   },
   {
     "name": "MySQL",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-    "category": "db"
+    "cat": "Dev",
+    "level": 86,
+    "color": "#4479A1",
+    "icon": "🗄️"
   },
   {
-    "name": "PostgreSQL",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-    "category": "db"
+    "name": "Wireshark",
+    "cat": "Seguridad",
+    "level": 82,
+    "color": "#1679A7",
+    "icon": "🔍"
   },
   {
-    "name": "MongoDB",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    "category": "db"
+    "name": "Nmap",
+    "cat": "Seguridad",
+    "level": 85,
+    "color": "#E83C2E",
+    "icon": "🛡️"
   },
   {
-    "name": "Redis",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
-    "category": "db"
+    "name": "Git",
+    "cat": "Dev",
+    "level": 90,
+    "color": "#F05032",
+    "icon": "📦"
   },
   {
-    "name": "Elasticsearch",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
-    "category": "monitoring"
+    "name": "Prometheus",
+    "cat": "Dev",
+    "level": 79,
+    "color": "#E6522C",
+    "icon": "📊"
   },
   {
-    "name": "Kibana",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kibana/kibana-original.svg",
-    "category": "monitoring"
+    "name": "WireGuard",
+    "cat": "Redes",
+    "level": 83,
+    "color": "#88171A",
+    "icon": "🔐"
+  },
+  {
+    "name": "BIND9",
+    "cat": "Redes",
+    "level": 80,
+    "color": "#1A237E",
+    "icon": "🌐"
   }
 ];

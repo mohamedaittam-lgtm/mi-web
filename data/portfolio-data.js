@@ -11,91 +11,87 @@ const portfolioItems = [
     "color": "electric"
   },
   {
-    "title": "Directorio Activo corporativo",
-    "category": "Infraestructura",
-    "desc": "Dominio Windows Server con GPOs, OU, DFS, y directivas de seguridad por departamento.",
+    "title": "Active Directory corporativo",
+    "category": "Redes & Directorio",
+    "desc": "Implementación de AD DS, políticas de grupo y gestión centralizada de usuarios.",
     "tags": [
-      "Windows Server",
-      "AD DS",
-      "GPO"
+      "AD",
+      "GPO",
+      "DNS"
+    ],
+    "color": "cyber"
+  },
+  {
+    "title": "VPN segura site-to-site",
+    "category": "Ciberseguridad",
+    "desc": "Red privada virtual entre dos sedes con WireGuard y firewall pfSense.",
+    "tags": [
+      "WireGuard",
+      "pfSense"
     ],
     "color": "violet"
   },
   {
-    "title": "Cloud híbrida con OpenStack",
-    "category": "Cloud",
-    "desc": "Nube privada OpenStack integrada con recursos AWS para burst de carga.",
+    "title": "DNS y DHCP resilientes",
+    "category": "Redes",
+    "desc": "Infraestructura DNS/DHCP redundante con BIND9 y dhcpd en alta disponibilidad.",
     "tags": [
-      "OpenStack",
-      "AWS",
-      "Hybrid"
+      "BIND9",
+      "DHCP",
+      "HA"
+    ],
+    "color": "electric"
+  },
+  {
+    "title": "Contenedores Docker en prod.",
+    "category": "DevOps",
+    "desc": "Pipeline de CI/CD con Docker, Compose y registry privado.",
+    "tags": [
+      "Docker",
+      "CI/CD"
     ],
     "color": "cyber"
   },
   {
     "title": "Cluster Kubernetes on-premise",
     "category": "Cloud",
-    "desc": "Cluster K8s con 5 nodos, almacenamiento Ceph, Ingress Controller y GitOps.",
+    "desc": "K3s en baremetal con ingress Nginx, cert-manager y monitorización Prometheus.",
     "tags": [
-      "K8s",
-      "Docker",
-      "Ceph"
-    ],
-    "color": "emerald"
-  },
-  {
-    "title": "SOC doméstico con ELK Stack",
-    "category": "Seguridad",
-    "desc": "SIEM completo: Elasticsearch, Logstash, Kibana, Fleet Server y agentes.",
-    "tags": [
-      "ELK",
-      "SIEM",
-      "Security"
-    ],
-    "color": "electric"
-  },
-  {
-    "title": "FW perímetral con pfSense",
-    "category": "Redes",
-    "desc": "Firewall con VPN site-to-site, VLANs, captive portal y failover WAN.",
-    "tags": [
-      "pfSense",
-      "VPN",
-      "VLAN"
+      "K3s",
+      "Nginx",
+      "TLS"
     ],
     "color": "violet"
   },
   {
-    "title": "CPD virtualizado con Proxmox",
-    "category": "Virtualización",
-    "desc": "Hipervisor Proxmox con HA, ZFS, backups automáticos y migración en vivo.",
+    "title": "Monitorización 24/7",
+    "category": "Observabilidad",
+    "desc": "Stack Prometheus + Grafana + Alertmanager con dashboards personalizados.",
     "tags": [
-      "Proxmox",
-      "HA",
-      "ZFS"
+      "Prometheus",
+      "Grafana"
+    ],
+    "color": "electric"
+  },
+  {
+    "title": "Estrategia backups 3-2-1",
+    "category": "Ciberseguridad",
+    "desc": "Backups automatizados con Restic, cifrado AES-256 y restauración verificada.",
+    "tags": [
+      "Restic",
+      "AES",
+      "S3"
     ],
     "color": "cyber"
   },
   {
-    "title": "Backup centralizado Veeam",
-    "category": "Infraestructura",
-    "desc": "Plataforma de backups 3-2-1 con Veeam, NAS remoto y replicación off-site.",
-    "tags": [
-      "Veeam",
-      "Backup",
-      "3-2-1"
-    ],
-    "color": "emerald"
-  },
-  {
-    "title": "Automatización con Ansible + AWX",
+    "title": "Migración cloud híbrida",
     "category": "Cloud",
-    "desc": "Gestión centralizada de configuración con playbooks Ansible y AWX web UI.",
+    "desc": "Migración de carga de trabajo on-prem a AWS con Terraform y zero downtime.",
     "tags": [
-      "Ansible",
-      "AWX",
-      "IaC"
+      "AWS",
+      "Terraform"
     ],
-    "color": "electric"
+    "color": "violet"
   }
 ];

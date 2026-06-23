@@ -72,6 +72,61 @@ const labTopologies = [
         "y": 210,
         "label": "SaaS",
         "type": "cloud"
+      },
+      {
+        "x": 400,
+        "y": 260,
+        "label": "VPN GW",
+        "type": "fw"
+      }
+    ],
+    "links": [
+      [
+        0,
+        3
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        1,
+        2
+      ]
+    ]
+  },
+  {
+    "name": "Kubernetes",
+    "nodes": [
+      {
+        "x": 300,
+        "y": 100,
+        "label": "Master",
+        "type": "fw"
+      },
+      {
+        "x": 160,
+        "y": 270,
+        "label": "Worker 1",
+        "type": "srv"
+      },
+      {
+        "x": 380,
+        "y": 270,
+        "label": "Worker 2",
+        "type": "srv"
+      },
+      {
+        "x": 540,
+        "y": 270,
+        "label": "Worker 3",
+        "type": "srv"
+      },
+      {
+        "x": 300,
+        "y": 390,
+        "label": "etcd",
+        "type": "cloud"
       }
     ],
     "links": [
@@ -80,8 +135,16 @@ const labTopologies = [
         1
       ],
       [
-        1,
+        0,
         2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
       ]
     ]
   },
@@ -89,89 +152,42 @@ const labTopologies = [
     "name": "VPN Site-to-Site",
     "nodes": [
       {
-        "x": 130,
-        "y": 150,
+        "x": 150,
+        "y": 220,
         "label": "Sede A",
         "type": "srv"
       },
       {
-        "x": 400,
-        "y": 200,
-        "label": "Internet VPN",
-        "type": "cloud"
-      },
-      {
         "x": 650,
-        "y": 150,
+        "y": 220,
         "label": "Sede B",
         "type": "srv"
       },
       {
         "x": 400,
-        "y": 70,
-        "label": "HQ",
-        "type": "srv"
-      }
-    ],
-    "links": [
-      [
-        0,
-        1
-      ],
-      [
-        1,
-        2
-      ],
-      [
-        1,
-        3
-      ]
-    ]
-  },
-  {
-    "name": "Cluster HA",
-    "nodes": [
-      {
-        "x": 400,
-        "y": 60,
-        "label": "VIP",
+        "y": 120,
+        "label": "WG GW-A",
         "type": "fw"
       },
       {
-        "x": 200,
-        "y": 200,
-        "label": "Node 1",
-        "type": "srv"
-      },
-      {
-        "x": 600,
-        "y": 200,
-        "label": "Node 2",
-        "type": "srv"
-      },
-      {
         "x": 400,
-        "y": 330,
-        "label": "Shared Storage",
-        "type": "cloud"
+        "y": 320,
+        "label": "WG GW-B",
+        "type": "fw"
       }
     ],
     "links": [
       [
         0,
-        1
-      ],
-      [
-        0,
         2
-      ],
-      [
-        1,
-        3
       ],
       [
         2,
         3
+      ],
+      [
+        3,
+        1
       ]
     ]
   }

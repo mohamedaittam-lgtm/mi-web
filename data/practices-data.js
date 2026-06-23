@@ -12,140 +12,135 @@ const practices = [
     "desc": "Guía completa: instalación mínima, SSH, UFW, fail2ban y actualizaciones automáticas."
   },
   {
-    "title": "Active Directory con Windows Server 2022",
-    "category": "Windows Server",
+    "title": "Configuración de DNS con BIND9",
+    "category": "Redes",
     "difficulty": "Alta",
     "time": "3h",
     "tech": [
-      "Server 2022",
-      "AD DS",
+      "BIND9",
       "DNS",
-      "DHCP"
+      "Linux"
     ],
-    "desc": "Despliegue completo de dominio: controlador, GPOs, OU, usuarios y directivas de seguridad."
+    "desc": "Servidor DNS maestro/esclavo, zonas directas e inversas, resolución recursiva segura."
   },
   {
-    "title": "Alta disponibilidad con keepalived + HAProxy",
-    "category": "Linux",
+    "title": "VPN site-to-site con WireGuard",
+    "category": "Seguridad",
+    "difficulty": "Alta",
+    "time": "4h",
+    "tech": [
+      "WireGuard",
+      "Linux",
+      "Redes"
+    ],
+    "desc": "Interconexión segura entre dos sedes con tunneling, routing y NAT."
+  },
+  {
+    "title": "Cluster MySQL con replicación maestro-esclavo",
+    "category": "Bases de datos",
+    "difficulty": "Alta",
+    "time": "3h 30m",
+    "tech": [
+      "MySQL",
+      "Linux",
+      "Bash"
+    ],
+    "desc": "Replicación asíncrona, backups automatizados y monitoreo básico."
+  },
+  {
+    "title": "Virtualización con Proxmox VE",
+    "category": "Virtualización",
+    "difficulty": "Media",
+    "time": "3h",
+    "tech": [
+      "Proxmox",
+      "KVM",
+      "LXC"
+    ],
+    "desc": "Instalación, VMs, contenedores, redes VLAN y políticas de backup."
+  },
+  {
+    "title": "Infraestructura en AWS con Terraform",
+    "category": "Cloud",
+    "difficulty": "Alta",
+    "time": "5h",
+    "tech": [
+      "AWS",
+      "Terraform",
+      "IaC"
+    ],
+    "desc": "IaC: VPC, subredes, EC2, S3 y security groups versionados en Git."
+  },
+  {
+    "title": "Automatización con Ansible",
+    "category": "Automatización",
+    "difficulty": "Media",
+    "time": "3h",
+    "tech": [
+      "Ansible",
+      "YAML",
+      "Linux"
+    ],
+    "desc": "Playbooks para servidores, despliegue de apps y gestión de usuarios."
+  },
+  {
+    "title": "Active Directory en Windows Server 2022",
+    "category": "Redes",
+    "difficulty": "Media",
+    "time": "4h",
+    "tech": [
+      "Windows Server",
+      "AD",
+      "DNS"
+    ],
+    "desc": "Controlador de dominio, GPOs, DHCP integrado y unidades organizativas."
+  },
+  {
+    "title": "Hardening SSH + auditoría con AIDE",
+    "category": "Seguridad",
     "difficulty": "Alta",
     "time": "2h",
     "tech": [
       "Linux",
-      "Keepalived",
-      "HAProxy"
+      "SSH",
+      "AIDE"
     ],
-    "desc": "Configuración de VIP y balanceo de carga entre dos servidores web."
+    "desc": "Claves, 2FA, integridad de ficheros y reglas de auditoría avanzadas."
   },
   {
-    "title": "Enrutamiento estático y dinámico con GNU/Linux",
-    "category": "Redes",
-    "difficulty": "Media",
-    "time": "1h 30m",
-    "tech": [
-      "Linux",
-      "Quagga",
-      "iptables"
-    ],
-    "desc": "Configuración de rutas estáticas y OSPF en una topología multi-router."
-  },
-  {
-    "title": "Docker Compose para aplicaciones web",
+    "title": "Kubernetes: despliegue de microservicios",
     "category": "Cloud",
+    "difficulty": "Alta",
+    "time": "5h",
+    "tech": [
+      "Kubernetes",
+      "Docker",
+      "Nginx"
+    ],
+    "desc": "Cluster local, YAML, ingress, secrets y HPA."
+  },
+  {
+    "title": "Monitorización con Prometheus y Grafana",
+    "category": "Automatización",
     "difficulty": "Media",
+    "time": "3h",
+    "tech": [
+      "Prometheus",
+      "Grafana",
+      "Docker"
+    ],
+    "desc": "Observabilidad completa: exporters, dashboards y alertas."
+  },
+  {
+    "title": "Docker Compose para entornos de desarrollo",
+    "category": "Automatización",
+    "difficulty": "Baja",
     "time": "1h 30m",
     "tech": [
       "Docker",
       "Compose",
       "Nginx"
     ],
-    "desc": "Multi-contenedor: app Python + PostgreSQL + Nginx proxy inverso."
-  },
-  {
-    "title": "Monitorización con Zabbix + Grafana",
-    "category": "Linux",
-    "difficulty": "Alta",
-    "time": "2h 30m",
-    "tech": [
-      "Linux",
-      "Zabbix",
-      "Grafana",
-      "SNMP"
-    ],
-    "desc": "Agentes SNMP, triggers, alertas y dashboards en tiempo real."
-  },
-  {
-    "title": "Seguridad perimetral con pfSense",
-    "category": "Redes",
-    "difficulty": "Alta",
-    "time": "2h",
-    "tech": [
-      "pfSense",
-      "Firewall",
-      "VLAN",
-      "OpenVPN"
-    ],
-    "desc": "Firewall, segmentación VLAN, VPN site-to-site y filtrado de tráfico."
-  },
-  {
-    "title": "Despliegue de WordPress con LAMP",
-    "category": "Cloud",
-    "difficulty": "Baja",
-    "time": "1h",
-    "tech": [
-      "Linux",
-      "Apache",
-      "MySQL",
-      "PHP"
-    ],
-    "desc": "Stack LAMP completo + WordPress + certificado SSL con Let's Encrypt."
-  },
-  {
-    "title": "Backup automatizado con rsync + cron",
-    "category": "Linux",
-    "difficulty": "Baja",
-    "time": "45m",
-    "tech": [
-      "Linux",
-      "Rsync",
-      "Cron"
-    ],
-    "desc": "Script de backup incremental remoto con rotaciones y notificaciones."
-  },
-  {
-    "title": "Virtualización con Proxmox VE",
-    "category": "Virtualización",
-    "difficulty": "Media",
-    "time": "2h",
-    "tech": [
-      "Proxmox",
-      "KVM",
-      "LXC",
-      "ZFS"
-    ],
-    "desc": "Instalación, creación de CT/VM, backups y migración en caliente."
-  },
-  {
-    "title": "DNS maestro-esclavo con BIND9",
-    "category": "Redes",
-    "difficulty": "Media",
-    "time": "1h 30m",
-    "tech": [
-      "Linux",
-      "BIND9",
-      "DNS"
-    ],
-    "desc": "Zonas primaria/secundaria, DDNS, y resolución inversa en Debian."
-  },
-  {
-    "title": "Cifrado GPG y firma digital",
-    "category": "Seguridad",
-    "difficulty": "Baja",
-    "time": "1h",
-    "tech": [
-      "Linux",
-      "GPG",
-      "OpenPGP"
-    ],
-    "desc": "Pares de claves, cifrado simétrico/asimétrico, firmas y verificación."
+    "desc": "Orquestación local de servicios web, BBDD y volúmenes persistentes."
   }
 ];
