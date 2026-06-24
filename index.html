@@ -310,6 +310,53 @@
       to   { opacity: 1; transform: none; }
     }
 
+    /* ── Blog modal content ── */
+    .blog-content { color: #CBD5E1; line-height: 1.7; }
+    .blog-content h1,
+    .blog-content h2,
+    .blog-content h3,
+    .blog-content h4 { color: #F1F5F9; font-family: inherit; }
+    .blog-content h1 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+    .blog-content h2 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+    .blog-content h3 { font-size: 1.1rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+    .blog-content p { margin: 0.75rem 0; color: #CBD5E1; }
+    .blog-content a { color: #3B82F6; text-decoration: underline; }
+    .blog-content a:hover { color: #60A5FA; }
+    .blog-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
+    .blog-content ol { list-style: decimal; padding-left: 1.5rem; margin: 0.75rem 0; }
+    .blog-content li { margin-bottom: 0.25rem; color: #CBD5E1; }
+    .blog-content b,
+    .blog-content strong { color: #F1F5F9; }
+    .blog-content i,
+    .blog-content em { color: #CBD5E1; }
+    .blog-content blockquote {
+      border-left: 3px solid #3B82F6; padding-left: 1rem;
+      margin: 1rem 0; color: #94A3B8; font-style: italic;
+    }
+    .blog-content img { max-width: 100%; border-radius: 12px; margin: 1rem 0; }
+    .blog-content iframe { width: 100%; border-radius: 12px; aspect-ratio: 16/9; margin: 1rem 0; }
+    .blog-content pre,
+    .blog-content code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; }
+    .blog-content code {
+      background: rgba(59,130,246,0.1); color: #60A5FA;
+      padding: 2px 6px; border-radius: 4px;
+    }
+    .blog-content pre {
+      background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem; border-radius: 12px; overflow-x: auto; margin: 1rem 0;
+    }
+    .blog-content pre code { background: none; padding: 0; color: #CBD5E1; }
+    .blog-content hr {
+      border: none; height: 1px; background: rgba(255,255,255,0.06); margin: 1.5rem 0;
+    }
+    .blog-content table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .blog-content th,
+    .blog-content td {
+      border: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0.75rem;
+      text-align: left; color: #CBD5E1;
+    }
+    .blog-content th { background: rgba(59,130,246,0.08); color: #F1F5F9; font-weight: 600; }
+
     /* ── Focus ── */
     :focus-visible { outline: 2px solid #3B82F6; outline-offset: 3px; }
 
@@ -1582,6 +1629,10 @@ function openBlogModal(slug) {
     const content = blogContent[slug];
     console.log('[BLOG_MODAL] content found:', !!content, 'length:', content?.length);
     if (!content) return showModal("Error", '<p class="text-red-400">Contenido no encontrado.</p>');
+    const cleanContent = content
+      .replace(/<h1[^>]*>[\s\S]*?<\/h1>/i, '')
+      .replace(/\sstyle="[^"]*"/gi, '')
+      .replace(/\sstyle='[^']*'/gi, '');
     console.log('[BLOG_MODAL] calling showModal');
     showModal(p.title, `
     <div class="space-y-5">
@@ -1591,8 +1642,8 @@ function openBlogModal(slug) {
       </div>
       <p class="text-slate-400 text-sm leading-relaxed">${escAttr(p.excerpt)}</p>
       <div class="flex flex-wrap gap-2 mb-4">${p.tags.map(t=>`<span class="tag-pill">${escAttr(t)}</span>`).join('')}</div>
-      <div class="blog-content text-slate-300 leading-relaxed text-sm [&_iframe]:w-full [&_iframe]:rounded-xl [&_iframe]:aspect-video [&_img]:rounded-xl [&_img]:max-w-full [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-white [&_h2]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-white [&_h3]:mt-4 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li]:mb-1 [&_a]:text-electric [&_a]:underline [&_p]:my-3 [&_br]:hidden">
-        ${content}
+      <div class="blog-content">
+        ${cleanContent}
       </div>
     </div>
   `);
