@@ -1,4 +1,4 @@
-var technologies = [
+const technologies = [
   {
     "name": "Linux",
     "cat": "Sistemas",

@@ -1,4 +1,4 @@
-var blogContent = {
+const blogContent = {
   "aadir-freenas-al-dominio-server-2012": "<p>&nbsp;</p><div class=\"separator\" style=\"clear: both; text-align: center;\"><iframe allowfullscreen=\"\" class=\"BLOG_video_class\" height=\"270\" src=\"https://www.youtube.com/embed/J2JlzOz1qV8\" width=\"460\" youtube-src-id=\"J2JlzOz1qV8\"></iframe></div><br /><p></p>",
   "aadir-la-plantilla-moove-a-moodle": "<p>&nbsp;</p><div class=\"separator\" style=\"clear: both; text-align: center;\"><iframe allowfullscreen=\"\" class=\"BLOG_video_class\" height=\"281\" src=\"https://www.youtube.com/embed/SxbEx4--fWk\" width=\"444\" youtube-src-id=\"SxbEx4--fWk\"></iframe></div><br /><p></p>",
   "aadir-synology-al-dominio-server-2012": "<p>&nbsp;</p><div class=\"separator\" style=\"clear: both; text-align: center;\"><iframe allowfullscreen=\"\" class=\"BLOG_video_class\" height=\"329\" src=\"https://www.youtube.com/embed/ork5b1ygdcY\" width=\"498\" youtube-src-id=\"ork5b1ygdcY\"></iframe></div><br /><p></p>",

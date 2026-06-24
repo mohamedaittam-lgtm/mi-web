@@ -1,4 +1,4 @@
-var certifications = [
+const certifications = [
   {
     "name": "LPIC-1 / Linux Essentials",
     "status": "Obtenida",

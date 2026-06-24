@@ -1,2 +1,10 @@
 .git_token
 auto-sync.sh
+.DS_Store
+*.log
+.env
+node_modules/
+practicas/_*.py
+practicas/content*.py
+practicas/generate.py
+practicas/__pycache__/

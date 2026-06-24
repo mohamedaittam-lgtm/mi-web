@@ -1,4 +1,4 @@
-var experiences = [
+const experiences = [
   {
     "role": "Administrador de Sistemas Senior",
     "company": "Empresa Tecnológica",

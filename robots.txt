@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohamedaittam-lgtm.github.io/mi-web/sitemap.xml
