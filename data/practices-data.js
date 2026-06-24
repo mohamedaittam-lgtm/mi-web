@@ -1,5 +1,6 @@
 var practices = [
   {
+    "slug": "ubuntu-server-hardening",
     "title": "Instalación y hardening de Ubuntu Server 22.04",
     "category": "Linux",
     "difficulty": "Media",
@@ -12,6 +13,7 @@ var practices = [
     "desc": "Guía completa: instalación mínima, SSH, UFW, fail2ban y actualizaciones automáticas."
   },
   {
+    "slug": "dns-bind9",
     "title": "Configuración de DNS con BIND9",
     "category": "Redes",
     "difficulty": "Alta",
@@ -24,6 +26,7 @@ var practices = [
     "desc": "Servidor DNS maestro/esclavo, zonas directas e inversas, resolución recursiva segura."
   },
   {
+    "slug": "vpn-wireguard-site-to-site",
     "title": "VPN site-to-site con WireGuard",
     "category": "Seguridad",
     "difficulty": "Alta",
@@ -36,6 +39,7 @@ var practices = [
     "desc": "Interconexión segura entre dos sedes con tunneling, routing y NAT."
   },
   {
+    "slug": "mysql-replicacion",
     "title": "Cluster MySQL con replicación maestro-esclavo",
     "category": "Bases de datos",
     "difficulty": "Alta",
@@ -48,6 +52,7 @@ var practices = [
     "desc": "Replicación asíncrona, backups automatizados y monitoreo básico."
   },
   {
+    "slug": "proxmox-ve",
     "title": "Virtualización con Proxmox VE",
     "category": "Virtualización",
     "difficulty": "Media",
@@ -60,6 +65,7 @@ var practices = [
     "desc": "Instalación, VMs, contenedores, redes VLAN y políticas de backup."
   },
   {
+    "slug": "aws-terraform",
     "title": "Infraestructura en AWS con Terraform",
     "category": "Cloud",
     "difficulty": "Alta",
@@ -72,6 +78,7 @@ var practices = [
     "desc": "IaC: VPC, subredes, EC2, S3 y security groups versionados en Git."
   },
   {
+    "slug": "ansible-automatizacion",
     "title": "Automatización con Ansible",
     "category": "Automatización",
     "difficulty": "Media",
@@ -84,6 +91,7 @@ var practices = [
     "desc": "Playbooks para servidores, despliegue de apps y gestión de usuarios."
   },
   {
+    "slug": "active-directory-ws2022",
     "title": "Active Directory en Windows Server 2022",
     "category": "Redes",
     "difficulty": "Media",
@@ -96,6 +104,7 @@ var practices = [
     "desc": "Controlador de dominio, GPOs, DHCP integrado y unidades organizativas."
   },
   {
+    "slug": "hardening-ssh-aide",
     "title": "Hardening SSH + auditoría con AIDE",
     "category": "Seguridad",
     "difficulty": "Alta",
@@ -108,6 +117,7 @@ var practices = [
     "desc": "Claves, 2FA, integridad de ficheros y reglas de auditoría avanzadas."
   },
   {
+    "slug": "kubernetes-microservicios",
     "title": "Kubernetes: despliegue de microservicios",
     "category": "Cloud",
     "difficulty": "Alta",
@@ -120,6 +130,7 @@ var practices = [
     "desc": "Cluster local, YAML, ingress, secrets y HPA."
   },
   {
+    "slug": "prometheus-grafana",
     "title": "Monitorización con Prometheus y Grafana",
     "category": "Automatización",
     "difficulty": "Media",
@@ -132,6 +143,7 @@ var practices = [
     "desc": "Observabilidad completa: exporters, dashboards y alertas."
   },
   {
+    "slug": "docker-compose-dev",
     "title": "Docker Compose para entornos de desarrollo",
     "category": "Automatización",
     "difficulty": "Baja",

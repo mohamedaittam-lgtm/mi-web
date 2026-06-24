@@ -357,6 +357,40 @@
     }
     .blog-content th { background: rgba(59,130,246,0.08); color: #F1F5F9; font-weight: 600; }
 
+    /* ── Practice guide ── */
+    .practice-guide h2 { font-size: 1.4rem; font-weight: 700; margin: 0 0 0.4rem; display: flex; align-items: center; gap: 0.6rem; color: #F1F5F9; scroll-margin-top: 80px; }
+    .practice-guide h2 .n { font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #3B82F6; background: rgba(59,130,246,0.12); border-radius: 0.5rem; padding: 0.15rem 0.55rem; }
+    .practice-guide h3 { font-size: 1.05rem; font-weight: 600; margin: 1.4rem 0 0.5rem; color: #E2E8F0; }
+    .practice-guide p { color: #CBD5E1; margin: 0.6rem 0; }
+    .practice-guide b { color: #F1F5F9; }
+    .practice-guide i { color: #CBD5E1; }
+    .practice-guide ul, .practice-guide ol { color: #CBD5E1; padding-left: 1.3rem; margin: 0.6rem 0; }
+    .practice-guide li { margin: 0.35rem 0; }
+    .practice-guide code { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: rgba(148,163,184,0.14); color: #7DD3FC; padding: 0.12rem 0.4rem; border-radius: 0.35rem; }
+    .practice-guide a { color: #3B82F6; text-decoration: underline; }
+    .practice-guide .card { background: rgba(15,23,42,0.55); border: 1px solid rgba(255,255,255,0.07); border-radius: 1rem; padding: 1.6rem 1.7rem; margin-bottom: 1.6rem; }
+    .practice-guide .note { border-left: 3px solid; border-radius: 0.6rem; padding: 0.9rem 1.1rem; margin: 1.1rem 0; font-size: 0.92rem; background: rgba(255,255,255,0.02); }
+    .practice-guide .note.tip { border-color: #10B981; }
+    .practice-guide .note.warn { border-color: #F59E0B; }
+    .practice-guide .note.info { border-color: #3B82F6; }
+    .practice-guide .note b { color: #fff; }
+    .practice-guide .term { background: #0B1120; border: 1px solid rgba(255,255,255,0.08); border-radius: 0.8rem; overflow: hidden; margin: 1rem 0; }
+    .practice-guide .term-bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 0.9rem; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .practice-guide .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .practice-guide .term-bar .lbl { margin-left: 0.5rem; font-size: 0.74rem; color: #64748B; font-family: 'JetBrains Mono', monospace; }
+    .practice-guide pre { margin: 0; padding: 1rem 1.1rem; overflow-x: auto; background: #0B1120; border-radius: 0.8rem; border: 1px solid rgba(255,255,255,0.08); }
+    .practice-guide pre code { background: none; color: #D1FAE5; padding: 0; font-size: 0.84rem; line-height: 1.65; display: block; white-space: pre; }
+    .practice-guide .cmt { color: #64748B; }
+    .practice-guide table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+    .practice-guide th, .practice-guide td { text-align: left; padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.07); color: #CBD5E1; }
+    .practice-guide th { color: #94A3B8; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .practice-guide .check { list-style: none; padding-left: 0; }
+    .practice-guide .check li { padding-left: 1.8rem; position: relative; }
+    .practice-guide .check li::before { content: "✓"; position: absolute; left: 0; color: #10B981; font-weight: 700; }
+    .practice-guide .step { background: rgba(15,23,42,0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 0.8rem; padding: 1.2rem 1.4rem; margin: 1rem 0; }
+    .practice-guide .cmd { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; background: rgba(0,0,0,0.3); border-radius: 0.5rem; padding: 0.6rem 0.9rem; margin: 0.5rem 0; color: #D1FAE5; }
+    .practice-guide img { max-width: 100%; border-radius: 0.8rem; margin: 1rem 0; }
+
     /* ── Focus ── */
     :focus-visible { outline: 2px solid #3B82F6; outline-offset: 3px; }
 
@@ -1359,11 +1393,28 @@ function openPracticeModal(idx) {
         </div>
       </div>
       <div class="flex gap-3 pt-2">
-        <a href="#" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-electric to-cyber text-white text-sm font-semibold text-center hover:opacity-90 transition-opacity">Abrir guía completa</a>
+        <button onclick="openPracticeGuide('${escAttr(p.slug)}')" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-electric to-cyber text-white text-sm font-semibold text-center hover:opacity-90 transition-opacity cursor-pointer">Abrir guía completa →</button>
         <a href="#" class="px-4 py-3 rounded-xl border border-white/10 text-slate-300 text-sm hover:bg-white/5 transition-colors">GitHub →</a>
       </div>
     </div>
   `);
+}
+
+function openPracticeGuide(slug) {
+  try {
+    fetch("practicas/" + slug + ".html")
+      .then(r => { if (!r.ok) throw new Error("Guía no encontrada"); return r.text(); })
+      .then(html => {
+        const match = html.match(/<main>([\s\S]*?)<\/main>/i);
+        if (!match) throw new Error("No se pudo extraer el contenido");
+        const title = practices.find(p => p.slug === slug)?.title || "Guía completa";
+        showModal(title, `<div class="practice-guide space-y-5">${match[1]}</div>`);
+      })
+      .catch(err => showModal("Error", '<p class="text-red-400">' + escAttr(err.message) + '</p>'));
+  } catch(e) {
+    console.error('[PRACTICE_GUIDE_ERROR]', e);
+    showModal("Error", '<p class="text-red-400">Error: ' + escAttr(e.message) + '</p>');
+  }
 }
 
 // ══════════════════════════════════════════════
