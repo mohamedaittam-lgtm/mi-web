@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+"""Metadatos de las 12 prácticas (igual que practices-data.js) + slug y nombre de archivo."""
+
+PRACTICES = [
+    {"file":"ubuntu-server-hardening.html","slug":"ubuntu-server","title":"Instalación y hardening de Ubuntu Server 22.04","category":"Linux","difficulty":"Media","time":"2h 30m","tech":["Linux","Bash","SSH"],"desc":"Guía completa: instalación mínima, SSH, UFW, fail2ban y actualizaciones automáticas."},
+    {"file":"dns-bind9.html","slug":"dns-bind9","title":"Configuración de DNS con BIND9","category":"Redes","difficulty":"Alta","time":"3h","tech":["BIND9","DNS","Linux"],"desc":"Servidor DNS maestro/esclavo, zonas directas e inversas, resolución recursiva segura."},
+    {"file":"vpn-wireguard-site-to-site.html","slug":"vpn-wireguard","title":"VPN site-to-site con WireGuard","category":"Seguridad","difficulty":"Alta","time":"4h","tech":["WireGuard","Linux","Redes"],"desc":"Interconexión segura entre dos sedes con tunneling, routing y NAT."},
+    {"file":"mysql-replicacion.html","slug":"mysql-cluster","title":"Cluster MySQL con replicación maestro-esclavo","category":"Bases de datos","difficulty":"Alta","time":"3h 30m","tech":["MySQL","Linux","Bash"],"desc":"Replicación asíncrona, backups automatizados y monitoreo básico."},
+    {"file":"proxmox-ve.html","slug":"proxmox-ve","title":"Virtualización con Proxmox VE","category":"Virtualización","difficulty":"Media","time":"3h","tech":["Proxmox","KVM","LXC"],"desc":"Instalación, VMs, contenedores, redes VLAN y políticas de backup."},
+    {"file":"aws-terraform.html","slug":"aws-terraform","title":"Infraestructura en AWS con Terraform","category":"Cloud","difficulty":"Alta","time":"5h","tech":["AWS","Terraform","IaC"],"desc":"IaC: VPC, subredes, EC2, S3 y security groups versionados en Git."},
+    {"file":"ansible-automatizacion.html","slug":"ansible","title":"Automatización con Ansible","category":"Automatización","difficulty":"Media","time":"3h","tech":["Ansible","YAML","Linux"],"desc":"Playbooks para servidores, despliegue de apps y gestión de usuarios."},
+    {"file":"active-directory-ws2022.html","slug":"active-directory","title":"Active Directory en Windows Server 2022","category":"Redes","difficulty":"Media","time":"4h","tech":["Windows Server","AD","DNS"],"desc":"Controlador de dominio, GPOs, DHCP integrado y unidades organizativas."},
+    {"file":"hardening-ssh-aide.html","slug":"ssh-aide","title":"Hardening SSH + auditoría con AIDE","category":"Seguridad","difficulty":"Alta","time":"2h","tech":["Linux","SSH","AIDE"],"desc":"Claves, 2FA, integridad de ficheros y reglas de auditoría avanzadas."},
+    {"file":"kubernetes-microservicios.html","slug":"kubernetes","title":"Kubernetes: despliegue de microservicios","category":"Cloud","difficulty":"Alta","time":"5h","tech":["Kubernetes","Docker","Nginx"],"desc":"Cluster local, YAML, ingress, secrets y HPA."},
+    {"file":"prometheus-grafana.html","slug":"prometheus-grafana","title":"Monitorización con Prometheus y Grafana","category":"Automatización","difficulty":"Media","time":"3h","tech":["Prometheus","Grafana","Docker"],"desc":"Observabilidad completa: exporters, dashboards y alertas."},
+    {"file":"docker-compose-dev.html","slug":"docker-compose","title":"Docker Compose para entornos de desarrollo","category":"Automatización","difficulty":"Baja","time":"1h 30m","tech":["Docker","Compose","Nginx"],"desc":"Orquestación local de servicios web, BBDD y volúmenes persistentes."},
+]
