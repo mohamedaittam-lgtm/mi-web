@@ -1407,8 +1407,9 @@ function openPracticeGuide(slug) {
       .then(html => {
         const match = html.match(/<main>([\s\S]*?)<\/main>/i);
         if (!match) throw new Error("No se pudo extraer el contenido");
+        const clean = match[1].replace(/<div\s+class="pager[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
         const title = practices.find(p => p.slug === slug)?.title || "Guía completa";
-        showModal(title, `<div class="practice-guide space-y-5">${match[1]}</div>`);
+        showModal(title, `<div class="practice-guide space-y-5">${clean}</div>`);
       })
       .catch(err => showModal("Error", '<p class="text-red-400">' + escAttr(err.message) + '</p>'));
   } catch(e) {
