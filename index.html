@@ -20,6 +20,9 @@
 <script src="data/lab-topologies-data.js"></script>
 <script src="data/experiences-data.js"></script>
 <script src="data/certifications-data.js"></script>
+<script src="data/skills-data.js"></script>
+<script src="data/languages-data.js"></script>
+<script src="data/training-data.js"></script>
 <script src="data/blog-index.js"></script>
 <script src="data/blog-content.js"></script>
 
@@ -895,12 +898,19 @@
                 <div class="relative w-36 h-36 mx-auto mb-6">
                   <div class="absolute inset-0 rounded-full bg-gradient-to-br from-electric to-cyber blur-xl opacity-30 animate-pulse"></div>
                   <div class="relative w-full h-full rounded-full bg-slate-800 border-2 border-electric/40 flex items-center justify-center overflow-hidden">
-                    <span class="text-5xl font-bold text-gradient">A</span>
+                    <span class="text-5xl font-bold text-gradient">M</span>
                   </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-1">Especialista ASIR</h3>
-                <p class="text-cyber font-medium text-sm mb-4">SysAdmin · Cloud · Security</p>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6">Administrador de Sistemas con enfoque en infraestructura híbrida, automatización y ciberseguridad defensiva.</p>
+                <h3 class="text-2xl font-bold mb-1">Mohamed Ait Tamghart</h3>
+                <p class="text-cyber font-medium text-sm mb-1">Técnico IT – Soporte OT/IT Industrial</p>
+                <p class="text-slate-500 text-xs mb-4">Monteagudo, Navarra</p>
+                <p class="text-slate-400 text-sm leading-relaxed mb-2">Técnico IT con 2+ años en entornos industriales. Especializado en soporte OT/IT, Bizerba, ciberseguridad (Wazuh/SIEM) y herramientas internas. Orientado a reducir paradas y mejorar continuidad operativa.</p>
+                <div class="flex flex-wrap justify-center gap-1.5 mb-6">
+                  <span class="tag-pill">Seguridad</span>
+                  <span class="tag-pill cyan">Monitorización</span>
+                  <span class="tag-pill violet">Open Source</span>
+                  <span class="tag-pill">Infraestructura</span>
+                </div>
                 <!-- Social -->
                 <div class="flex justify-center gap-3 mb-6">
                   <a href="https://github.com/mohamedaittam-lgtm" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl glass-card flex items-center justify-center text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
@@ -931,9 +941,33 @@
             <div class="glass rounded-3xl p-8">
               <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
                 <svg class="w-5 h-5 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
-                Certificaciones
+                Educación
               </h3>
               <div class="grid sm:grid-cols-2 gap-4" id="certifications-grid"></div>
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+              <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                Idiomas
+              </h3>
+              <div class="flex flex-wrap gap-2" id="languages-grid"></div>
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+              <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Habilidades Técnicas
+              </h3>
+              <div class="space-y-4" id="skills-grid"></div>
+            </div>
+
+            <div class="glass rounded-3xl p-8">
+              <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+                <svg class="w-5 h-5 text-cyber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                Formación Complementaria
+              </h3>
+              <div class="flex flex-wrap gap-2" id="training-grid"></div>
             </div>
           </div>
         </div>
