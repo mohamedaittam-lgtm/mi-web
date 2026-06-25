@@ -16,7 +16,6 @@
 <!-- Data files -->
 <script src="data/technologies-data.js"></script>
 <script src="data/practices-data.js"></script>
-<script src="data/portfolio-data.js"></script>
 <script src="data/roadmaps-data.js"></script>
 <script src="data/lab-topologies-data.js"></script>
 <script src="data/experiences-data.js"></script>
@@ -554,7 +553,7 @@
         <a href="#tecnologias" class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Stack tecnológico</a>
         <a href="#practicas"   class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Prácticas</a>
         <a href="#laboratorio" class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Laboratorio</a>
-        <a href="#portfolio"   class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Portfolio</a>
+
         <a href="#aprendizaje" class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Rutas de aprendizaje</a>
         <a href="#blog"        class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Blog técnico</a>
         <a href="#perfil"      class="block px-4 py-2.5 text-sm text-slate-300 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Perfil</a>
@@ -607,7 +606,7 @@
 
         <!-- CTA buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal" style="transition-delay:240ms">
-          <a href="#portfolio" class="group px-8 py-4 rounded-xl bg-gradient-to-r from-electric to-cyber text-white font-semibold hover:scale-105 btn-glow transition-all flex items-center gap-2">
+          <a href="#practicas" class="group px-8 py-4 rounded-xl bg-gradient-to-r from-electric to-cyber text-white font-semibold hover:scale-105 btn-glow transition-all flex items-center gap-2">
             Ver proyectos
             <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
@@ -811,17 +810,6 @@
       </div>
     </section>
 
-    <!-- ═══════════════ PORTFOLIO ═══════════════ -->
-    <section id="portfolio" class="py-28 relative bg-[#020617]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16 reveal">
-          <div class="section-label mb-4">Proyectos reales</div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Portfolio <span class="text-gradient">Profesional</span></h2>
-          <p class="text-slate-400 max-w-2xl mx-auto">Infraestructuras diseñadas, desplegadas y documentadas en entornos reales.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid"></div>
-      </div>
-    </section>
 
     <!-- ═══════════════ LEARNING ═══════════════ -->
     <section id="aprendizaje" class="py-28 relative">
@@ -1086,7 +1074,6 @@
           <ul class="space-y-2 text-sm text-slate-400">
             <li><a href="#tecnologias" class="hover:text-electric transition-colors">Stack tecnológico</a></li>
             <li><a href="#practicas"   class="hover:text-electric transition-colors">Prácticas</a></li>
-            <li><a href="#portfolio"   class="hover:text-electric transition-colors">Portfolio</a></li>
             <li><a href="#blog"        class="hover:text-electric transition-colors">Blog técnico</a></li>
             <li><a href="#aprendizaje" class="hover:text-electric transition-colors">Roadmaps</a></li>
           </ul>
@@ -1632,46 +1619,6 @@ function triggerDdosAttack() {
 }
 
 // ══════════════════════════════════════════════
-//  PORTFOLIO
-// ══════════════════════════════════════════════
-function renderPortfolio() {
-  document.getElementById('portfolio-grid').innerHTML = portfolioItems.map((p,i) => `
-    <article class="glass-card rounded-2xl p-6 flex flex-col grad-border">
-      <div class="flex items-start justify-between mb-4">
-        <span class="badge ${colorToBadge(p.color)}">${p.category}</span>
-      </div>
-      <h3 class="font-semibold text-lg mb-2">${p.title}</h3>
-      <p class="text-slate-400 text-sm flex-grow mb-4 leading-relaxed">${p.desc}</p>
-      <div class="flex flex-wrap gap-1.5 mb-5">
-        ${p.tags.map(t=>`<span class="tag-pill">${t}</span>`).join('')}
-      </div>
-      <button onclick="openPortfolioModal(${i})" class="w-full py-2.5 rounded-xl border border-white/10 text-sm text-slate-300 hover:bg-white/5 hover:border-white/20 transition-all">
-        Ver detalles →
-      </button>
-    </article>
-  `).join('');
-}
-
-function openPortfolioModal(idx) {
-  const p = portfolioItems[idx];
-  showModal(p.title, `
-    <div class="space-y-5">
-      <span class="badge ${colorToBadge(p.color)}">${p.category}</span>
-      <p class="text-slate-300 leading-relaxed">${p.desc}</p>
-      <div class="flex flex-wrap gap-2">${p.tags.map(t=>`<span class="tag-pill">${t}</span>`).join('')}</div>
-      <div class="glass rounded-xl p-5 space-y-3 text-sm text-slate-400">
-        <div class="flex justify-between"><span>Estado</span><span class="text-emerald-400">✓ En producción</span></div>
-        <div class="flex justify-between"><span>Documentación</span><span class="text-electric">Disponible</span></div>
-        <div class="flex justify-between"><span>Repositorio</span><span class="text-cyber">GitHub privado</span></div>
-      </div>
-      <a href="#contacto" onclick="closeModal()" class="block w-full py-3 text-center rounded-xl bg-gradient-to-r from-electric to-cyber text-white font-semibold text-sm hover:opacity-90 transition-opacity">
-        Solicitar acceso al repositorio
-      </a>
-    </div>
-  `);
-}
-
-// ══════════════════════════════════════════════
 //  ROADMAP
 // ══════════════════════════════════════════════
 function renderRoadmapSelector() {
@@ -1849,7 +1796,6 @@ function initGlobalSearch() {
 
     blogIndex.forEach((p,i)   => { if(p.title.toLowerCase().includes(ql)||p.excerpt.toLowerCase().includes(ql)) results.push({type:'Artículo',  title:p.title,     href:'#blog',        idx:p.slug, fn:'openBlogModal'}); });
     practices.forEach((p,i)   => { if(p.title.toLowerCase().includes(ql)||p.desc.toLowerCase().includes(ql))   results.push({type:'Práctica',  title:p.title,     href:'#practicas',   idx:i, fn:'openPracticeModal'}); });
-    portfolioItems.forEach((p,i)=>{ if(p.title.toLowerCase().includes(ql)||p.category.toLowerCase().includes(ql)) results.push({type:'Proyecto', title:p.title,     href:'#portfolio',   idx:i, fn:'openPortfolioModal'}); });
     technologies.forEach(t    => { if(t.name.toLowerCase().includes(ql))                                         results.push({type:'Tecnología',title:t.name,     href:'#tecnologias', idx:-1}); });
 
     if (!results.length) {
@@ -1984,7 +1930,7 @@ function initScroll() {
     else                { backTop.classList.add('opacity-0','pointer-events-none'); }
 
     // Active nav links
-    const sections = ['hero','tecnologias','practicas','laboratorio','portfolio','aprendizaje','blog','perfil','contacto'];
+    const sections = ['hero','tecnologias','practicas','laboratorio','aprendizaje','blog','perfil','contacto'];
     sections.forEach(id => {
       const sec = document.getElementById(id);
       if (!sec) return;
@@ -2073,7 +2019,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderSkillBars();
     renderPracticeFilters();
     renderPractices();
-    renderPortfolio();
     renderRoadmapSelector();
     renderBlog();
     renderProfile();
