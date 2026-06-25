@@ -755,6 +755,18 @@
                 Actualización cada 3s
               </div>
             </div>
+
+            <div class="glass-card rounded-2xl p-6">
+              <h3 class="font-semibold mb-4 text-sm uppercase tracking-wider text-slate-400">Control de Simulación</h3>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="triggerStressTest()" id="btn-stress" class="px-3 py-2.5 rounded-xl border border-white/10 text-xs font-semibold text-slate-300 hover:bg-electric/20 hover:border-electric/40 transition-all flex items-center justify-center gap-2">
+                  ⚡ Stress Test
+                </button>
+                <button onclick="triggerDdosAttack()" id="btn-ddos" class="px-3 py-2.5 rounded-xl border border-white/10 text-xs font-semibold text-slate-300 hover:bg-red-500/20 hover:border-red-500/40 transition-all flex items-center justify-center gap-2">
+                  🛡️ Simular DDoS
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Visualization -->
@@ -1422,6 +1434,8 @@ function openPracticeGuide(slug) {
 //  LAB
 // ══════════════════════════════════════════════
 
+let currentLabTopoIndex = 0;
+
 function renderLabTopologies() {
   const c = document.getElementById('lab-topologies');
   c.innerHTML = labTopologies.map((t,i) =>
@@ -1433,6 +1447,7 @@ function renderLabTopologies() {
       c.querySelectorAll('button').forEach(b => { b.classList.remove('border-electric/40'); b.classList.add('border-transparent'); });
       btn.classList.remove('border-transparent'); btn.classList.add('border-electric/40');
       const idx = parseInt(btn.dataset.i);
+      currentLabTopoIndex = idx;
       document.getElementById('lab-topo-label').textContent = labTopologies[idx].name;
       drawTopology(idx);
     });
@@ -1478,15 +1493,13 @@ function drawTopology(idx) {
       </circle>`;
   }).join('');
 
-  let nodes = t.nodes.map(n => {
+  let nodes = t.nodes.map((n, nodeIdx) => {
     const col = nodeColor(n.type);
     return `
-      <g transform="translate(${n.x},${n.y})" class="node" style="cursor:pointer">
+      <g transform="translate(${n.x},${n.y})" class="node" style="cursor:pointer" onclick="openNodeModal(${idx}, ${nodeIdx})">
         <circle r="28" fill="#0F172A" stroke="${col}" stroke-width="2" filter="url(#nodeGlow)"/>
         <circle r="28" fill="${col}" opacity="0.08"/>
-        <text text-anchor="middle" dominant-baseline="middle" fill="${col}" font-size="14">
-          ${n.type==='cloud'?'☁️': n.type==='fw'?'🔥':'🖥'}
-        </text>
+        ${getNodeIcon(n.type, col)}
         <text y="44" text-anchor="middle" fill="#94A3B8" font-size="11">${n.label}</text>
       </g>`;
   }).join('');
@@ -1494,23 +1507,128 @@ function drawTopology(idx) {
   svg.innerHTML = defs + links + nodes;
 }
 
+function openNodeModal(topoIdx, nodeIdx) {
+  const topo = labTopologies[topoIdx];
+  const node = topo.nodes[nodeIdx];
+
+  const ip = node.ip || `192.168.${topoIdx + 10}.${nodeIdx * 10 + 5}`;
+  const os = node.os || (node.type === 'fw' ? 'pfsense / FreeBSD 14' : node.type === 'cloud' ? 'AWS / Cloud VPC' : 'Debian 12 (Bookworm)');
+  const uuptime = '42 días, 5h 12m';
+
+  showModal(`Nodo: ${node.label} (${topo.name})`, `
+    <div class="space-y-5 text-slate-300 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="badge badge-green">✓ En línea</span>
+        <span class="text-xs text-slate-500">Uptime: ${uuptime}</span>
+      </div>
+
+      <div class="glass rounded-2xl p-5 space-y-3.5 border border-white/5 font-mono text-xs">
+        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+          <span class="text-slate-400">Dirección IP</span>
+          <span class="text-electric">${ip}</span>
+        </div>
+        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+          <span class="text-slate-400">Sistema Operativo</span>
+          <span class="text-cyber">${os}</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-slate-400">Carga Promedio (Load Avg)</span>
+          <span class="text-violet-400">0.45, 0.52, 0.48</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Servicios del Nodo</h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="tag-pill cyan">SSH (22/tcp)</span>
+          ${node.type === 'fw' ? '<span class="tag-pill violet">WireGuard (51820/udp)</span><span class="tag-pill">Firewall Rules: 142</span>' : ''}
+          ${node.type === 'srv' ? '<span class="tag-pill">Docker Engine</span><span class="tag-pill cyan">Prometheus Exporter</span>' : ''}
+          ${node.type === 'cloud' ? '<span class="tag-pill violet">BGP Peering</span><span class="tag-pill cyan">IPSec VPN</span>' : ''}
+        </div>
+      </div>
+
+      <div class="terminal border border-electric/20 rounded-xl overflow-hidden text-xs">
+        <div class="terminal-bar bg-electric/10 px-4 py-2 flex items-center gap-2 text-slate-400 border-b border-electric/20">
+          <span class="terminal-dot bg-red-500/80"></span>
+          <span class="terminal-dot bg-yellow-500/80"></span>
+          <span class="terminal-dot bg-green-500/80"></span>
+          <span class="ml-2 font-mono text-[11px]">syslog@${node.label.toLowerCase().replace(/\s+/g, '-')}</span>
+        </div>
+        <div class="p-4 font-mono space-y-1 bg-darker/90 text-slate-300">
+          <div><span class="text-slate-500">[14:22:10]</span> <span class="s-ok">INFO:</span> Conexión establecida con gateway.</div>
+          <div><span class="text-slate-500">[14:23:45]</span> <span class="s-cmd">HEALTHCHECK:</span> Todos los servicios operando al 100%.</div>
+          <div><span class="prompt">root@${node.label.toLowerCase().replace(/\s+/g, '-')}#</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  `);
+}
+
 function initLabMetrics() {
   function update() {
-    const cpu  = 30 + Math.floor(Math.random()*45);
-    const mem  = 50 + Math.floor(Math.random()*35);
-    const net  = (0.5 + Math.random()*1.8).toFixed(1);
-    const disk = 20 + Math.floor(Math.random()*60);
+    let baseCpu = 30, baseMem = 45, baseNet = 0.5, baseDisk = 30;
+
+    if (currentLabTopoIndex === 1) {
+      baseCpu = 45; baseMem = 60; baseNet = 1.2; baseDisk = 45;
+    } else if (currentLabTopoIndex === 2) {
+      baseCpu = 65; baseMem = 75; baseNet = 2.1; baseDisk = 60;
+    } else if (currentLabTopoIndex === 3) {
+      baseCpu = 25; baseMem = 35; baseNet = 3.5; baseDisk = 20;
+    }
+
+    const cpu  = baseCpu + Math.floor(Math.random() * 25);
+    const mem  = baseMem + Math.floor(Math.random() * 15);
+    const net  = (baseNet + Math.random() * 0.8).toFixed(1);
+    const disk = baseDisk + Math.floor(Math.random() * 5);
+
     document.getElementById('metric-cpu').textContent  = cpu+'%';
     document.getElementById('bar-cpu').style.width     = cpu+'%';
     document.getElementById('metric-mem').textContent  = mem+'%';
     document.getElementById('bar-mem').style.width     = mem+'%';
     document.getElementById('metric-net').textContent  = net+' Gbps';
-    document.getElementById('bar-net').style.width     = Math.min(parseFloat(net)*40,100)+'%';
+    document.getElementById('bar-net').style.width     = Math.min(parseFloat(net)*25, 100)+'%';
     document.getElementById('metric-disk').textContent = disk+'%';
     document.getElementById('bar-disk').style.width    = disk+'%';
   }
   update();
   setInterval(update, 3000);
+}
+
+let isStressTest = false;
+let isDdos = false;
+
+function triggerStressTest() {
+  isStressTest = !isStressTest;
+  const btn = document.getElementById('btn-stress');
+  if (isStressTest) {
+    btn.classList.add('bg-electric/20', 'border-electric/40', 'text-electric');
+    document.getElementById('metric-cpu').textContent = '98%';
+    document.getElementById('bar-cpu').style.width = '98%';
+    document.getElementById('metric-mem').textContent = '94%';
+    document.getElementById('bar-mem').style.width = '94%';
+    document.querySelectorAll('animateMotion').forEach(a => a.setAttribute('dur', '0.4s'));
+  } else {
+    btn.classList.remove('bg-electric/20', 'border-electric/40', 'text-electric');
+    drawTopology(currentLabTopoIndex);
+  }
+}
+
+function triggerDdosAttack() {
+  isDdos = !isDdos;
+  const btn = document.getElementById('btn-ddos');
+  if (isDdos) {
+    btn.classList.add('bg-red-500/20', 'border-red-500/40', 'text-red-400');
+    document.getElementById('metric-net').textContent = '14.8 Gbps';
+    document.getElementById('bar-net').style.width = '100%';
+    document.getElementById('bar-net').style.background = '#EF4444';
+    document.querySelectorAll('#lab-svg circle[r="3.5"]').forEach(c => c.setAttribute('fill', '#EF4444'));
+    document.getElementById('lab-topo-label').textContent += ' (⚠️ ALERTA DDoS)';
+  } else {
+    btn.classList.remove('bg-red-500/20', 'border-red-500/40', 'text-red-400');
+    document.getElementById('bar-net').style.background = 'linear-gradient(90deg,#7C3AED,#3B82F6)';
+    document.getElementById('lab-topo-label').textContent = labTopologies[currentLabTopoIndex].name;
+    drawTopology(currentLabTopoIndex);
+  }
 }
 
 // ══════════════════════════════════════════════
