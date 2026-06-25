@@ -1873,8 +1873,7 @@ function renderProfile() {
       <div class="timeline-dot"></div>
       <div class="font-semibold">${e.role}</div>
       <div class="text-cyber text-sm font-medium mb-1">${e.company} · <span class="text-slate-500">${e.period}</span></div>
-      <p class="text-slate-400 text-sm leading-relaxed mb-2">${e.desc}</p>
-      ${e.details ? '<ul class="list-disc list-inside text-xs text-slate-400 space-y-0.5">' + e.details.map(d => '<li>' + d + '</li>').join('') + '</ul>' : ''}
+      <p class="text-slate-400 text-sm leading-relaxed">${e.desc}</p>
     </div>
   `).join('');
 
