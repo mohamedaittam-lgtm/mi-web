@@ -948,7 +948,7 @@
 
             <div class="glass rounded-3xl p-8">
               <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
-                <svg class="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                 Idiomas
               </h3>
               <div class="flex flex-wrap gap-2" id="languages-grid"></div>
@@ -1873,11 +1873,12 @@ function renderProfile() {
       <div class="timeline-dot"></div>
       <div class="font-semibold">${e.role}</div>
       <div class="text-cyber text-sm font-medium mb-1">${e.company} · <span class="text-slate-500">${e.period}</span></div>
-      <p class="text-slate-400 text-sm leading-relaxed">${e.desc}</p>
+      <p class="text-slate-400 text-sm leading-relaxed mb-2">${e.desc}</p>
+      ${e.details ? '<ul class="list-disc list-inside text-xs text-slate-400 space-y-0.5">' + e.details.map(d => '<li>' + d + '</li>').join('') + '</ul>' : ''}
     </div>
   `).join('');
 
-  // Certifications
+  // Education
   document.getElementById('certifications-grid').innerHTML = certifications.map(c => `
     <div class="cert-card">
       <div class="w-10 h-10 rounded-xl bg-electric/10 flex items-center justify-center flex-shrink-0">
@@ -1894,6 +1895,29 @@ function renderProfile() {
         </div>
       </div>
     </div>
+  `).join('');
+
+  // Languages
+  document.getElementById('languages-grid').innerHTML = languages.map(l => `
+    <span class="tag-pill flex items-center gap-1.5 px-3 py-1.5">
+      <span class="badge ${l.badge} text-[10px] px-1.5 py-0">${l.level}</span>
+      ${l.name}
+    </span>
+  `).join('');
+
+  // Skills
+  document.getElementById('skills-grid').innerHTML = skillCategories.map(s => `
+    <div>
+      <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" style="color:${s.color}">${s.name}</div>
+      <div class="flex flex-wrap gap-1.5">
+        ${s.items.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // Training
+  document.getElementById('training-grid').innerHTML = training.map(t => `
+    <span class="tag-pill cyan">${t}</span>
   `).join('');
 }
 
