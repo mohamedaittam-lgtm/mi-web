@@ -2106,29 +2106,19 @@ function openLegalModal(type) {
 //  SINCRONIZACIÓN CV & ESTADÍSTICAS
 // ══════════════════════════════════════════════
 function syncCvData() {
-  const miCV = {
-    aniosExperiencia: 5,
-    practicas: typeof practices !== 'undefined' && practices.length > 12 ? practices.length : 300,
-    proyectos: 50,
-    tecnologias: typeof technologies !== 'undefined' ? technologies.length : 15,
-    especialidad: "soporte OT/IT, Bizerba, ciberseguridad (Wazuh/SIEM) y herramientas internas",
-    objetivo: "reducir paradas y mejorar la continuidad operativa."
-  };
+  const numPracticas = typeof practices !== 'undefined' ? practices.length : 12;
+  const numBlog = typeof blogIndex !== 'undefined' ? blogIndex.length : 137;
+  const numTech = typeof technologies !== 'undefined' ? technologies.length : 20;
 
   const elPracticas = document.getElementById('count-practicas');
   const elProyectos = document.getElementById('count-proyectos');
   const elTecnologias = document.getElementById('count-tecnologias');
   const elExperiencia = document.getElementById('count-experiencia');
 
-  if (elPracticas) elPracticas.setAttribute('data-count', miCV.practicas);
-  if (elProyectos) elProyectos.setAttribute('data-count', miCV.proyectos);
-  if (elTecnologias) elTecnologias.setAttribute('data-count', miCV.tecnologias);
-  if (elExperiencia) elExperiencia.setAttribute('data-count', miCV.aniosExperiencia);
-
-  const elBio = document.getElementById('perfil-bio');
-  if (elBio) {
-    elBio.innerHTML = `Técnico IT con <b>${miCV.aniosExperiencia}+ años de experiencia</b> en entornos industriales y de producción. Especializado en ${miCV.especialidad}. Orientado a ${miCV.objetivo} Contando con un portfolio activo de <b>${miCV.proyectos} proyectos desplegados</b> y dominio sobre más de <b>${miCV.tecnologias} tecnologías clave</b> en sistemas y redes.`;
-  }
+  if (elPracticas) elPracticas.setAttribute('data-count', numPracticas);
+  if (elProyectos) elProyectos.setAttribute('data-count', numPracticas + numBlog);
+  if (elTecnologias) elTecnologias.setAttribute('data-count', numTech);
+  if (elExperiencia) elExperiencia.setAttribute('data-count', 2);
 }
 
 // ══════════════════════════════════════════════
