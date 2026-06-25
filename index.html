@@ -2066,6 +2066,43 @@ function initReveal() {
 }
 
 // ══════════════════════════════════════════════
+//  LEGAL MODALS
+// ══════════════════════════════════════════════
+function openLegalModal(type) {
+  if (type === 'privacy') {
+    showModal('Política de Privacidad', `
+      <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+        <div class="border-b border-white/10 pb-4"><h3 class="text-lg font-semibold text-white mb-1">Protección de Datos y Privacidad (RGPD)</h3><p class="text-xs text-slate-500">Última actualización: Junio 2026 · Cumplimiento del Reglamento General de Protección de Datos (UE 2016/679)</p></div>
+        <section class="space-y-2"><h4 class="text-cyber font-semibold text-base">1. Responsable del Tratamiento</h4><p>El responsable principal de esta web y del tratamiento de los datos recogidos a través de la misma es <strong>Mohamed Ait Tamghart</strong> (Especialista ASIR). Puedes contactar conmigo de forma directa a través del formulario habilitado en la sección de contacto o mediante mi perfil profesional de LinkedIn.</p></section>
+        <section class="space-y-2"><h4 class="text-cyber font-semibold text-base">2. Datos recopilados y Finalidad</h4><p>Esta página web únicamente recopila datos de carácter personal a través del formulario de contacto (Nombre, Dirección de Correo Electrónico y Mensaje). La única finalidad del tratamiento de estos datos es gestionar y dar respuesta a consultas profesionales, ofertas laborales o propuestas de colaboración. No se realizan automatizaciones, elaboración de perfiles ni se enviará spam.</p></section>
+        <section class="space-y-2"><h4 class="text-cyber font-semibold text-base">3. Base Legitimadora y Conservación</h4><p>La base legal para el tratamiento de tus datos es el <strong>consentimiento expreso</strong> que otorgas al pulsar el botón de envío del formulario. Los datos se conservarán únicamente durante el tiempo necesario para resolver la consulta o gestionar la relación profesional iniciada.</p></section>
+        <section class="space-y-2"><h4 class="text-cyber font-semibold text-base">4. Servicios de Terceros y Alojamiento</h4><p>Para garantizar una infraestructura segura y de alta disponibilidad, este portafolio se apoya en servicios técnicos externos que actúan como encargados del tratamiento bajo estrictas normas de seguridad: <strong>Formspree Inc.</strong> (procesamiento de correos) y <strong>GitHub Pages</strong> (alojamiento y distribución global con cifrado SSL/TLS).</p></section>
+        <section class="space-y-2"><h4 class="text-cyber font-semibold text-base">5. Derechos del Usuario</h4><p>De acuerdo con la normativa vigente, tienes pleno derecho a acceder a tus datos, rectificarlos, solicitar su supresión o limitar su tratamiento enviando una solicitud a través del propio formulario de contacto.</p></section>
+      </div>
+    `);
+  } else if (type === 'terms') {
+    showModal('Términos y Condiciones de Uso', `
+      <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+        <div class="border-b border-white/10 pb-4"><h3 class="text-lg font-semibold text-white mb-1">Términos y Condiciones de Uso</h3><p class="text-xs text-slate-500">Condiciones aplicables al acceso y uso de los contenidos técnicos de ASIR.dev</p></div>
+        <section class="space-y-2"><h4 class="text-electric font-semibold text-base">1. Objeto de la Plataforma</h4><p>Este sitio web es un portafolio profesional y técnico diseñado para la difusión de conocimientos sobre Administración de Sistemas Informáticos en Red (ASIR), ciberseguridad, infraestructuras cloud y virtualización. El acceso a la web es libre y gratuito.</p></section>
+        <section class="space-y-2"><h4 class="text-electric font-semibold text-base">2. Propiedad Intelectual y Licencia</h4><p>Todos los contenidos originales, textos explicativos, diagramas de topologías de red, esquemas de configuración y el diseño visual general de esta web son propiedad de <strong>Mohamed Ait Tamghart</strong>. Los scripts, repositorios de código y configuraciones compartidas se proporcionan con un espíritu de código abierto, permitiendo su reutilización para entornos formativos citando la fuente original.</p></section>
+        <section class="space-y-2"><h4 class="text-electric font-semibold text-base">3. Exención de Responsabilidad Técnica</h4><p class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-200 text-xs font-mono">⚠️ ATENCIÓN: Toda la documentación, guías de comandos, configuraciones de firewalls (pfSense, iptables, WireGuard) y laboratorios expuestos en este sitio se ofrecen con propósitos estrictamente educativos e informativos.</p><p>El autor no se hace responsable en ningún caso de la pérdida de datos, caídas de servicio, brechas de seguridad o incidencias en entornos de producción derivadas de la aplicación de las guías publicadas sin una validación y adaptación previa por parte del usuario en un entorno de pruebas.</p></section>
+        <section class="space-y-2"><h4 class="text-electric font-semibold text-base">4. Uso Adecuado</h4><p>El usuario se compromete a hacer un uso lícito y correcto de la plataforma, absteniéndose de intentar vulnerar las medidas de seguridad del sitio, inyectar código malicioso o realizar scraping masivo indebido.</p></section>
+      </div>
+    `);
+  } else if (type === 'cookies') {
+    showModal('Política de Cookies', `
+      <div class="space-y-6 text-slate-300 text-sm leading-relaxed">
+        <div class="border-b border-white/10 pb-4"><h3 class="text-lg font-semibold text-white mb-1">Política de Cookies y Almacenamiento Local</h3><p class="text-xs text-slate-500">Transparencia sobre seguimiento web y privacidad técnica (LSSI-CE)</p></div>
+        <section class="space-y-3"><div class="flex items-center gap-3 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-medium"><svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Página libre de rastreadores publicitarios y cookies invasivas.</span></div><p>En coherencia con las buenas prácticas de privacidad y ciberseguridad, esta página web <strong>NO utiliza cookies publicitarias, de rastreo masivo ni píxeles de seguimiento de terceros</strong>.</p></section>
+        <section class="space-y-2"><h4 class="text-violet font-semibold text-base">1. Qué tecnologías técnicas se utilizan aquí</h4><p>Debido a la naturaleza estática del portafolio (desplegado bajo infraestructura de <strong>GitHub Pages</strong>), solo se utilizan elementos técnicos: almacenamiento del estado del modo oscuro en LocalStorage y logs técnicos de la CDN de GitHub para mitigar ataques DDoS y entregar el sitio de forma segura.</p></section>
+        <section class="space-y-2"><h4 class="text-violet font-semibold text-base">2. No obligatoriedad del Banner de Consentimiento</h4><p>De acuerdo con el Artículo 22.2 de la LSSI y las directrices de la AEPD, no es obligatorio mostrar un banner de aviso de cookies ni recabar consentimiento explícito cuando únicamente se emplean cookies técnicas necesarias para el funcionamiento y seguridad de la plataforma.</p></section>
+      </div>
+    `);
+  }
+}
+
+// ══════════════════════════════════════════════
 //  BOOT
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
